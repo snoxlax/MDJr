@@ -25,6 +25,7 @@ export default function Markdown({ children }: MarkdownProps) {
 
   return (
     <ReactMarkdown
+      className=""
       remarkPlugins={[remarkGfm, [remarkToc, { maxDepth: 3, tight: true }]]}
       rehypePlugins={[[rehypeSlug, rehypePrism]]}
       components={{

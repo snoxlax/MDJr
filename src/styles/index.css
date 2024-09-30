@@ -1,3 +1,17 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,14 +27,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.container {
+  margin: 0 auto;
 }
 
 .markdowndiv {
   width: 90vw;
   margin: 1rem;
+}
+
+textarea {
+  width: 75vw;
 }
