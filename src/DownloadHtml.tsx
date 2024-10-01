@@ -3,10 +3,9 @@ import { Button } from 'react-bootstrap';
 interface DownloadHtmlProps {
   variant: string,
   className: string,
-  elementRef: React.RefObject<HTMLDivElement>
 }
 
-export default function DownloadHtml({ variant, className, elementRef }: DownloadHtmlProps) {
+export default function DownloadHtml({ variant, className }: DownloadHtmlProps) {
   // Function to hide all buttons before download
   const hideButtons = () => {
     const buttons = document.querySelectorAll('button');

@@ -1,4 +1,4 @@
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 interface HomeProps {
@@ -18,15 +18,16 @@ export default function Home({ setMarkdownContent, markdownContent }: HomeProps)
   };
   return (
     <>
-      <Container fluid className="vh-100 d-flex justify-content-center align-items-center m-auto container">
+      <Container fluid style={{ height: '96vh' }} className="d-flex justify-content-center align-items-center">
         <Row className="text-center">
-          <Col className="">
+          <Col>
             <h1 className="m-4">MDJR</h1>
-            <textarea rows={10} cols={100} className="m-4 p-4 bg-secondary"
+            <Form.Control cols={80} rows={20} as="textarea" className="bg-secondary p-4"
               placeholder="Enter your Markdown here..."
               value={markdownContent}
-              onChange={handleTextareaChange} />
-            <Button variant="outline-primary" onClick={handleClick} className="text-bold m-4 p-2">
+              onChange={handleTextareaChange}
+            />
+            <Button style={{ padding: '15px 40px', fontSize: '20px' }} size="lg" variant="outline-primary" onClick={handleClick} className="text-bold m-4 p-2">
               Convert
             </Button>
           </Col>

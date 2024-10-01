@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 import ConvertedMd from './ConvertedMd';
 import Home from './Home';
+import Footer from './Footer';
 
 function App() {
   // Step 1: Create state to store textarea value
@@ -20,6 +21,7 @@ function App() {
           <Route path="/converted" element={<ConvertedMd markdownContent={markdownContent} />} />
         </Routes>
       </Router >
+      <Footer />
     </>
   )
 }

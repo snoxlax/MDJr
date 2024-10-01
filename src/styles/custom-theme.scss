@@ -1,7 +1,12 @@
 $primary: #9b57f9;
 $secondary: #001e4e;
+$success: #198754;
+$info: #0dcaf0;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #32363a;
 $surface-bg: #2e3368;
-$danger: rgb(241, 108, 108);
 $body-color: #ffffff;
 $body-bg: #232339;
 $text-muted: #96a8c6;
@@ -31,7 +36,14 @@ $pagination-color: $body-color;
 $pagination-hover-color: $primary;
 $pagination-focus-color: $primary;
 $input-placeholder-color: rgba($body-color, 0.65);
-
+$code-color: rgb(2, 248, 150);
 $enable-negative-margins: true;
 
 @import 'bootstrap/scss/bootstrap';
+
+code {
+  background-color: $dark; // You can use any other variable like $gray-200
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.3rem;
+  font-size: 0.875rem;
+}
