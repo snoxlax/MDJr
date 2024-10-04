@@ -9,7 +9,7 @@ interface ConvertedMdProps {
 }
 
 export default function ConvertedMd({ markdownContent }: ConvertedMdProps) {
-  const { toPDF, targetRef } = usePDF({ filename: 'page.pdf' });
+  const { targetRef } = usePDF({ filename: 'page.pdf' });
 
   const navigate = useNavigate();
   const handleClick = () => {
