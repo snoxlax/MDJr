@@ -1,5 +1,7 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Popup from "./Popup";
+import { useState } from "react";
 
 interface HomeProps {
   setMarkdownContent: (markdownContent: string) => void,
@@ -8,13 +10,18 @@ interface HomeProps {
 
 export default function Home({ setMarkdownContent, markdownContent }: HomeProps) {
 
+  const [isConditionMet, setIsConditionMet] = useState<boolean>(false);
   const navigate = useNavigate();
   const handleTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMarkdownContent(event.target.value);
   };
 
   const handleClick = () => {
-    navigate('/converted'); // Navigate to the "About" page
+    if (markdownContent.length !== 0) {
+      navigate('/converted');
+    } else {
+      setIsConditionMet(prev => !prev)// Navigate to the "About" page
+    }
   };
   return (
     <>
@@ -30,6 +37,7 @@ export default function Home({ setMarkdownContent, markdownContent }: HomeProps)
             <Button style={{ padding: '15px 40px', fontSize: '20px' }} size="lg" variant="outline-primary" onClick={handleClick} className="text-bold m-4 p-2">
               Convert
             </Button>
+            <Popup show={isConditionMet} handleClose={() => setIsConditionMet(false)} />
           </Col>
         </Row>
       </Container>
