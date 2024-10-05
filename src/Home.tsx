@@ -29,7 +29,8 @@ export default function Home({ setMarkdownContent, markdownContent }: HomeProps)
         <Row className="text-center">
           <Col>
             <h1 className="m-4">MDJR</h1>
-            <Form.Control cols={80} rows={20} as="textarea" className="bg-secondary p-4"
+            <hr className="border-4 border-primary" />
+            <Form.Control cols={80} rows={20} as="textarea" className="border-0 bg-secondary p-4"
               placeholder="Enter your Markdown here..."
               value={markdownContent}
               onChange={handleTextareaChange}

@@ -1,4 +1,4 @@
-import { Modal } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -12,13 +12,13 @@ export default function Popup({ show, handleClose }: PopupProps) {
     <div>
       {/* Bootstrap Modal */}
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal Title</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
           The text to convert is empty
         </Modal.Body>
         <Modal.Footer>
+          <Button variant='secondary' onClick={handleClose}>
+            Close
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>
