@@ -22,15 +22,44 @@ export default function DownloadHtml({ variant, className }: DownloadHtmlProps) 
     });
   };
 
-  const downloadPageHtml = () => {
+  const downloadPageHtml = async () => {
     // Hide all buttons
     hideButtons();
 
     // Get the entire HTML content of the page, including head and body
     const htmlContent = document.documentElement.outerHTML;
 
+    // Get all stylesheets
+    const stylesheets = Array.from(document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]'));
+    let cssContent = '';
+
+    // Fetch all external CSS files
+    for (const sheet of stylesheets) {
+      try {
+        const response = await fetch(sheet.href);
+        const cssText = await response.text();
+        cssContent += cssText + '\n';
+      } catch (error) {
+        console.error('Failed to fetch CSS:', sheet.href, error);
+      }
+    }
+
+    // Get inline styles too
+    const inlineStyles = Array.from(document.querySelectorAll('style'))
+      .map(style => style.innerHTML)
+      .join('\n');
+
+    // Combine all CSS
+    const fullCSS = cssContent + inlineStyles;
+
+    // Insert CSS into head
+    const modifiedHTML = htmlContent.replace(
+      '</head>',
+      `<style>${fullCSS}</style></head>`
+    );
+
     // Create a Blob from the HTML content
-    const blob = new Blob([htmlContent], { type: 'text/html' });
+    const blob = new Blob([modifiedHTML], { type: 'text/html' });
 
     // Create a link element for downloading
     const link = document.createElement('a');
