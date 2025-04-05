@@ -46,3 +46,58 @@ code {
   border-radius: 0.3rem;
   font-size: 0.875rem;
 }
+
+.markdown-editor {
+  min-height: 500px;
+  background-color: white;
+}
+
+.editor-content {
+  min-height: 450px;
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Toolbar styling */
+.markdown-editor [role='toolbar'] {
+  border-bottom: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Button styling */
+.markdown-editor button {
+  padding: 4px 8px;
+  background-color: transparent;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  color: #495057;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.markdown-editor button:hover {
+  background-color: #e9ecef;
+}
+
+/* Dropdown styling */
+.markdown-editor select {
+  padding: 4px 8px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background-color: white;
+  color: #495057;
+}
+
+/* Placeholder styling */
+.markdown-editor [data-placeholder]:empty:before {
+  content: attr(data-placeholder);
+  color: #6c757d;
+  pointer-events: none;
+}
