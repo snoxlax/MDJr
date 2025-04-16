@@ -61,10 +61,17 @@ export default function DownloadHtml({ variant, className }: DownloadHtmlProps) 
     // Create a Blob from the HTML content
     const blob = new Blob([modifiedHTML], { type: 'text/html' });
 
+    const currentDate = new Date();
+
+    // Format as "DD-MM-YYYY HH:MM:SS"
+    const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${currentDate.getFullYear()} ${String(currentDate.getHours()).padStart(2, '0')}:${String(currentDate.getMinutes()).padStart(2, '0')}:${String(currentDate.getSeconds()).padStart(2, '0')}`;
+
+    console.log(formattedDate); // Output: "15-11-2023 14:25:30" (example)
+
     // Create a link element for downloading
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'page.html'; // Name of the downloaded file
+    link.download = formattedDate + '.html'; // Name of the downloaded file
 
     // Programmatically click the link to trigger the download
     link.click();
