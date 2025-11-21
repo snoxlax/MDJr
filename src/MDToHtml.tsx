@@ -43,6 +43,11 @@ export default function Markdown({ children }: MarkdownProps) {
             </a>
           </span>
         ),
+        table: ({ children, ...props }) => (
+          <div className="table-wrapper">
+            <table {...props}>{children}</table>
+          </div>
+        ),
       }}
     >
       {children}
