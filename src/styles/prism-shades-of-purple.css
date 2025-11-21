@@ -7,7 +7,7 @@ code[class*='language-'],
 pre[class*='language-'] {
   color: #c5c8c6;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
+  font-family: Consolas, 'Courier New', Courier, monospace;
   direction: ltr;
   text-align: left;
   white-space: pre;
@@ -30,11 +30,19 @@ pre[class*='language-'] {
   margin: 2em 0;
   overflow: auto;
   border-radius: 0.5em;
+  position: relative;
+  isolation: isolate;
+}
+
+/* When pre is inside wrapper, adjust styling */
+.code-block-wrapper > pre[class*='language-'] {
+  margin: 0;
+  border-radius: 0 0 0.5em 0.5em;
 }
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  background: #1d1f21;
+  background: #131517;
 }
 
 :not(pre) > code[class*='language-'] {
@@ -68,7 +76,11 @@ pre[class*='language-'] {
   text-decoration: underline;
 }
 
-.token.boolean,
+.token.boolean {
+  color: #ff6b9d;
+  font-weight: 500;
+}
+
 .token.constant {
   color: #99cc99;
 }
@@ -86,9 +98,13 @@ pre[class*='language-'] {
 .token.attr-name,
 .token.string,
 .token.char,
-.token.builtin,
 .token.inserted {
   color: #a8ff60;
+}
+
+.token.builtin {
+  color: #4ec9b0;
+  font-weight: 500;
 }
 
 .token.variable {
@@ -137,4 +153,65 @@ pre[class*='language-'] {
 
 .token.italic {
   font-style: italic;
+}
+
+/* Code block wrapper */
+.code-block-wrapper {
+  margin: 2em 0;
+  border-radius: 0.5em;
+  overflow: hidden;
+  background: #131517;
+}
+
+/* Code block header styling - on top of pre */
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5em 0.5em 0 0;
+  flex-shrink: 0;
+}
+
+/* Language label styling */
+.code-language-label {
+  font-size: 0.75em;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: Consolas, 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* Copy button styling in header */
+.code-block-header > .code-copy-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.4em 0.8em;
+  border-radius: 0.3em;
+  font-size: 0.75em;
+  cursor: pointer;
+  font-family: Consolas, 'Courier New', Courier, monospace;
+  transition: all 0.2s ease;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.code-block-header > .code-copy-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.code-block-header > .code-copy-button:active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.code-block-header > .code-copy-button.copied {
+  background: rgba(76, 201, 176, 0.3);
+  border-color: rgba(76, 201, 176, 0.5);
+  color: #4ec9b0;
 }

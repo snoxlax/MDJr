@@ -6,6 +6,7 @@ import styles from './styles/MDToHtml.module.css';
 import Prism from 'prismjs';
 import rehypePrism from 'rehype-prism-plus';
 import 'prismjs/themes/prism-tomorrow.css';
+import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-tsx';
@@ -13,6 +14,7 @@ import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-json';
 import './styles/prism-shades-of-purple.css';
 import { useEffect } from 'react';
+import { useCodeCopyButtons } from './hooks/useCodeCopyButtons';
 
 interface MarkdownProps {
   children: string;
@@ -22,6 +24,8 @@ export default function Markdown({ children }: MarkdownProps) {
   useEffect(() => {
     Prism.highlightAll();
   }, [children]);
+
+  useCodeCopyButtons(children);
 
   return (
     <ReactMarkdown

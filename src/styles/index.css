@@ -26,19 +26,18 @@
   overflow-x: auto;
   margin: 24px 0;
   -webkit-overflow-scrolling: touch;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0;
   margin: 0;
   font-size: 15px;
   font-family: Inter, system-ui, -apple-system, sans-serif;
-  border-radius: 8px;
   overflow: hidden;
   background-color: var(--table-row-bg-color-odd);
-  border: 1px solid var(--table-border-color);
 }
 
 thead {
@@ -67,19 +66,9 @@ thead th {
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  border-right: 1px solid var(--table-col-border-color);
   color: rgba(255, 255, 255, 0.95);
   position: relative;
   transition: background-color 0.2s ease;
-}
-
-thead th:first-child {
-  border-top-left-radius: 8px;
-}
-
-thead th:last-child {
-  border-right: none;
-  border-top-right-radius: 8px;
 }
 
 tbody tr {
@@ -96,23 +85,10 @@ tbody tr:last-child {
   border-bottom: none;
 }
 
-tbody tr:last-child td:first-child {
-  border-bottom-left-radius: 8px;
-}
-
-tbody tr:last-child td:last-child {
-  border-bottom-right-radius: 8px;
-}
-
 tbody td {
-  padding: 14px 20px;
-  border-right: 1px solid var(--table-col-border-color);
+  padding: 1rem;
   color: var(--table-text-color);
   text-align: left;
   line-height: 1.6;
   vertical-align: middle;
-}
-
-tbody td:last-child {
-  border-right: none;
 }
