@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import MDToHtml from './MDToHtml';
 import { Button } from 'react-bootstrap';
 import DownloadHtml from './DownloadHtml';
@@ -12,22 +12,13 @@ const STORAGE_KEY = 'markdown-content';
 
 export default function ConvertedMd({ markdownContent }: ConvertedMdProps) {
   const navigate = useNavigate();
-  const [content, setContent] = useState(markdownContent);
-
+  const content = localStorage.getItem(STORAGE_KEY) || markdownContent || '';
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (!markdownContent) {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        setContent(saved);
-      }
-    } else {
-      setContent(markdownContent);
-    }
-  }, [markdownContent]);
+  }, []);
 
   const handleClick = () => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); // Scroll to top
     navigate('/');
   };
 
