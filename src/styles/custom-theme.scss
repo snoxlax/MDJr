@@ -42,9 +42,37 @@ $enable-negative-margins: true;
 @import 'bootstrap/scss/bootstrap';
 
 code {
-  background-color: $dark; // You can use any other variable like $gray-200
+  background-color: $dark;
   border-radius: 0.3rem;
   font-size: 0.875rem;
+}
+
+:not(pre) > code {
+  padding: 0.2em 0.2em;
+}
+
+p {
+  margin-bottom: 0.2rem;
+}
+
+ul,
+ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 2rem;
+}
+
+li {
+  margin-bottom: 0.25rem;
+  line-height: 1.6;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .markdown-editor {
@@ -60,7 +88,6 @@ code {
   color: #333;
 }
 
-/* Toolbar styling */
 .markdown-editor [role='toolbar'] {
   border-bottom: 1px solid #dee2e6;
   background-color: #f8f9fa;
@@ -70,7 +97,6 @@ code {
   gap: 8px;
 }
 
-/* Button styling */
 .markdown-editor button {
   padding: 4px 8px;
   background-color: transparent;
@@ -86,7 +112,6 @@ code {
   background-color: #e9ecef;
 }
 
-/* Dropdown styling */
 .markdown-editor select {
   padding: 4px 8px;
   border: 1px solid #dee2e6;
@@ -95,7 +120,6 @@ code {
   color: #495057;
 }
 
-/* Placeholder styling */
 .markdown-editor [data-placeholder]:empty:before {
   content: attr(data-placeholder);
   color: #6c757d;

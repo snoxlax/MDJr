@@ -1,15 +1,18 @@
 import { Button } from 'react-bootstrap';
 
 interface DownloadHtmlProps {
-  variant: string,
-  className: string,
+  variant: string;
+  className: string;
 }
 
-export default function DownloadHtml({ variant, className }: DownloadHtmlProps) {
+export default function DownloadHtml({
+  variant,
+  className,
+}: DownloadHtmlProps) {
   // Function to hide all buttons before download
   const hideButtons = () => {
     const buttons = document.querySelectorAll('button');
-    buttons.forEach(button => {
+    buttons.forEach((button) => {
       (button as HTMLElement).style.display = 'none';
     });
   };
@@ -17,7 +20,7 @@ export default function DownloadHtml({ variant, className }: DownloadHtmlProps) 
   // Function to show all buttons after download
   const showButtons = () => {
     const buttons = document.querySelectorAll('button');
-    buttons.forEach(button => {
+    buttons.forEach((button) => {
       (button as HTMLElement).style.display = '';
     });
   };
@@ -30,7 +33,9 @@ export default function DownloadHtml({ variant, className }: DownloadHtmlProps) 
     const htmlContent = document.documentElement.outerHTML;
 
     // Get all stylesheets
-    const stylesheets = Array.from(document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]'));
+    const stylesheets = Array.from(
+      document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"]')
+    );
     let cssContent = '';
 
     // Fetch all external CSS files
@@ -46,7 +51,7 @@ export default function DownloadHtml({ variant, className }: DownloadHtmlProps) 
 
     // Get inline styles too
     const inlineStyles = Array.from(document.querySelectorAll('style'))
-      .map(style => style.innerHTML)
+      .map((style) => style.innerHTML)
       .join('\n');
 
     // Combine all CSS
@@ -64,7 +69,18 @@ export default function DownloadHtml({ variant, className }: DownloadHtmlProps) 
     const currentDate = new Date();
 
     // Format as "DD-MM-YYYY HH:MM:SS"
-    const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${currentDate.getFullYear()} ${String(currentDate.getHours()).padStart(2, '0')}:${String(currentDate.getMinutes()).padStart(2, '0')}:${String(currentDate.getSeconds()).padStart(2, '0')}`;
+    const formattedDate = `${String(currentDate.getDate()).padStart(
+      2,
+      '0'
+    )}-${String(currentDate.getMonth() + 1).padStart(
+      2,
+      '0'
+    )}-${currentDate.getFullYear()} ${String(currentDate.getHours()).padStart(
+      2,
+      '0'
+    )}:${String(currentDate.getMinutes()).padStart(2, '0')}:${String(
+      currentDate.getSeconds()
+    ).padStart(2, '0')}`;
 
     console.log(formattedDate); // Output: "15-11-2023 14:25:30" (example)
 
@@ -85,8 +101,12 @@ export default function DownloadHtml({ variant, className }: DownloadHtmlProps) 
     }, 100); // Delay to ensure download link is clicked first
   };
   return (
-    <Button onClick={downloadPageHtml} variant={variant} className={className}>
+    <Button
+      onClick={downloadPageHtml}
+      variant={variant}
+      className={className}
+    >
       Download
     </Button>
-  )
+  );
 }

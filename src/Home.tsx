@@ -2,7 +2,6 @@ import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Popup from './Popup';
 import { useState } from 'react';
-// import MarkdownEditor from "./MDXEditor";
 
 interface HomeProps {
   setMarkdownContent: (markdownContent: string) => void;
@@ -25,15 +24,9 @@ export default function Home({
     if (markdownContent.length !== 0) {
       navigate('/converted');
     } else {
-      setIsConditionMet((prev) => !prev); // Navigate to the "About" page
+      setIsConditionMet((prev) => !prev);
     }
   };
-
-  // const [xmarkdownContent, setMXarkdownContent] = useState<string>('');
-
-  // const handleMarkdownChange = (newContent: string) => {
-  //   setMXarkdownContent(newContent);
-  // };
 
   return (
     <>
@@ -62,7 +55,6 @@ export default function Home({
                 </div>
 
                 <Form.Group controlId="markdownInput">
-                  {/* <Form.Label className="fw-semibold">Markdown Input</Form.Label> */}
                   <Form.Control
                     as="textarea"
                     rows={15}

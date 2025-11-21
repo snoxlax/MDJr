@@ -11,30 +11,43 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --table-header-bg-color: #001730; /* Default blue for the header */
-  --table-header-text-color: #ffffff; /* White text in the header */
-  --table-row-bg-color-even: #00407f; /* Light gray for even rows */
-  --table-row-bg-color-odd: #00407f; /* White for odd rows */
-  --table-row-hover-color: #070022; /* Light hover color */
-  --table-border-color: #ddd; /* Border color */
-  --table-text-color: #ffffff; /* Default text color */
-  --table-col-border-color: #ccc; /* Color for column borders */
+  --table-header-bg-color: #0f1222;
+  --table-header-text-color: #ffffff;
+  --table-row-bg-color-even: #2e3368;
+  --table-row-bg-color-odd: #232339;
+  --table-row-hover-color: #363e89;
+  --table-border-color: rgba(255, 255, 255, 0.1);
+  --table-text-color: rgba(255, 255, 255, 0.9);
+  --table-col-border-color: rgba(255, 255, 255, 0.08);
 }
 
 table {
   width: 100%;
-  border-collapse: collapse; /* Ensure borders collapse for cleaner lines */
-  margin: 20px 0;
-  font-size: 16px;
-  font-family: 'Arial', sans-serif;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add slight shadow */
-  border: 1px solid var(--table-border-color); /* Outer border of the table */
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 24px 0;
+  font-size: 15px;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--table-row-bg-color-odd);
+  border: 1px solid var(--table-border-color);
 }
 
-/* Header Styling */
 thead {
-  background-color: var(--table-header-bg-color);
+  background: var(--table-header-bg-color);
   color: var(--table-header-text-color);
+  position: relative;
+}
+
+thead::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(155, 87, 249, 0.5);
 }
 
 thead tr {
@@ -42,85 +55,57 @@ thead tr {
 }
 
 thead th {
-  padding: 12px 15px;
+  padding: 16px 20px;
   font-weight: 600;
+  font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-right: 1px solid var(--table-col-border-color); /* Add right border to separate columns */
+  letter-spacing: 0.08em;
+  border-right: 1px solid var(--table-col-border-color);
+  color: rgba(255, 255, 255, 0.95);
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+thead th:first-child {
+  border-top-left-radius: 8px;
 }
 
 thead th:last-child {
-  border-right: none; /* Remove the right border for the last column */
+  border-right: none;
+  border-top-right-radius: 8px;
 }
 
-/* Body Styling */
-tbody tr:nth-child(even) {
-  background-color: var(--table-row-bg-color-even);
-}
-
-tbody tr:nth-child(odd) {
+tbody tr {
   background-color: var(--table-row-bg-color-odd);
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid var(--table-border-color);
 }
 
 tbody tr:hover {
   background-color: var(--table-row-hover-color);
 }
 
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
 tbody td {
-  padding: 12px 15px;
-  border-bottom: 1px solid var(--table-border-color); /* Row border */
-  border-right: 1px solid var(--table-col-border-color); /* Column border */
+  padding: 14px 20px;
+  border-right: 1px solid var(--table-col-border-color);
   color: var(--table-text-color);
   text-align: left;
+  line-height: 1.6;
+  vertical-align: middle;
 }
 
 tbody td:last-child {
-  border-right: none; /* Remove the right border for the last column */
-}
-
-/* Add some spacing around the table */
-table {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-  table {
-    width: 100%;
-  }
-
-  thead {
-    display: none; /* Hide the table header on small screens */
-  }
-
-  tbody tr {
-    display: block;
-    margin-bottom: 20px;
-    border: 1px solid var(--table-border-color);
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
-  }
-
-  tbody td {
-    display: block;
-    text-align: left; /* Align text to the left */
-    padding-left: 15px; /* Adjust left padding for readability */
-    position: relative;
-  }
-
-  tbody td::before {
-    content: attr(data-label); /* Display the data-label attribute */
-    position: absolute;
-    left: 0;
-    width: 50%;
-    padding-left: 15px;
-    font-weight: bold;
-    text-align: left; /* Ensure labels are aligned to the left */
-    background-color: var(
-      --table-row-bg-color-even
-    ); /* Optional: Add background for labels */
-  }
-
-  tbody td:last-child {
-    border-right: none; /* Remove right border for last column */
-  }
+  border-right: none;
 }

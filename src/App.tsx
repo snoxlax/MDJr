@@ -5,25 +5,29 @@ import Home from './Home';
 import Footer from './Footer';
 
 function App() {
-  // Step 1: Create state to store textarea value
   const [markdownContent, setMarkdownContent] = useState('');
-
-
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={
-            <Home
-              markdownContent={markdownContent}
-              setMarkdownContent={setMarkdownContent} />}
+          <Route
+            path="/"
+            element={
+              <Home
+                markdownContent={markdownContent}
+                setMarkdownContent={setMarkdownContent}
+              />
+            }
           />
-          <Route path="/converted" element={<ConvertedMd markdownContent={markdownContent} />} />
+          <Route
+            path="/converted"
+            element={<ConvertedMd markdownContent={markdownContent} />}
+          />
         </Routes>
-      </Router >
+      </Router>
       <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

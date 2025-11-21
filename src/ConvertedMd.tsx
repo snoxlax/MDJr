@@ -2,18 +2,15 @@ import { useNavigate } from 'react-router-dom';
 import MDToHtml from './MDToHtml';
 import { Button } from 'react-bootstrap';
 import DownloadHtml from './DownloadHtml';
-import { usePDF } from 'react-to-pdf';
 
 interface ConvertedMdProps {
   markdownContent: string;
 }
 
 export default function ConvertedMd({ markdownContent }: ConvertedMdProps) {
-  const { targetRef } = usePDF({ filename: 'page.pdf' });
-
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/'); // Navigate to the "About" page
+    navigate('/');
   };
 
   return (
@@ -21,9 +18,7 @@ export default function ConvertedMd({ markdownContent }: ConvertedMdProps) {
       className="mx-auto py-4"
       style={{ maxWidth: '90rem' }}
     >
-      <div ref={targetRef}>
-        <MDToHtml>{markdownContent}</MDToHtml>
-      </div>
+      <MDToHtml>{markdownContent}</MDToHtml>
       <div className="d-flex justify-content-between p-4">
         <Button
           variant="outline-primary"
@@ -36,9 +31,6 @@ export default function ConvertedMd({ markdownContent }: ConvertedMdProps) {
           variant="outline-primary"
           className="text-bold"
         />
-        {/* Button to trigger print */}
-
-        {/* <Button onClick={() => toPDF()}>Print to PDF</Button> */}
       </div>
     </div>
   );
