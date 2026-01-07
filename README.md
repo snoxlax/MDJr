@@ -1,50 +1,69 @@
-# React + TypeScript + Vite
+<h1 align="center">
+  <br>
+  <a href="https://github.com/snoxlax/MDJr"><img src="https://raw.githubusercontent.com/snoxlax/MDJr/main/docs/image.png" alt="MDJR" width="600"></a>
+  <br>
+  MDJR
+  <br>
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h4 align="center">A simple Markdown to HTML converter web application.</h4>
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+MDJR is a web application that converts Markdown text into HTML. Simply paste your Markdown content, convert it, and download it as a standalone HTML file.
 
-## Expanding the ESLint configuration
+## Key Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Convert Markdown to HTML
+- Download converted content as a single HTML file
+- Supports code blocks with syntax highlighting
+- Supports standard Markdown features (headings, lists, links, images, tables, etc.)
 
-- Configure the top-level `parserOptions` property like this:
+## Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- React 18
+- TypeScript
+- Vite
+- React Markdown
+- Prism.js
+- Bootstrap 5
+- React Router
+- SCSS
+
+## Installation
+
+You'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) installed on your computer.
+
+```bash
+# Clone this repository
+git clone https://github.com/snoxlax/MDJr.git
+
+# Go into the repository
+cd MDJr
+
+# Install dependencies
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## How to Use
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Development
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+# Start the development server
+npm run dev
 ```
+
+The application will be available at `http://localhost:5173`.
+
+### Using the Application
+
+1. Type or paste your Markdown content in the text area
+2. Click the "Convert" button to see your Markdown rendered as HTML
+3. Click the "Download" button to save the converted content as an HTML file
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/snoxlax">snoxlax</a>
+</p>
