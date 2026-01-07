@@ -1,9 +1,5 @@
 <h1 align="center">
-  <br>
   <a href="https://github.com/snoxlax/MDJr"><img src="https://github.com/snoxlax/MDJr/blob/master/docs/image.png" alt="MDJR" width="600"></a>
-  <br>
-  MDJR
-  <br>
 </h1>
 
 <h4 align="center">A simple Markdown to HTML converter web application.</h4>
