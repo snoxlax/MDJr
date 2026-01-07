@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/snoxlax/MDJr"><img src="https://raw.githubusercontent.com/snoxlax/MDJr/main/docs/image.png" alt="MDJR" width="600"></a>
+  <a href="https://github.com/snoxlax/MDJr"><img src="https://github.com/snoxlax/MDJr/blob/master/docs/image.png" alt="MDJR" width="600"></a>
   <br>
   MDJR
   <br>
@@ -65,5 +65,5 @@ The application will be available at `http://localhost:5173`.
 ---
 
 <p align="center">
-  Made with ❤️ by <a href="https://github.com/snoxlax">snoxlax</a>
+  Made by <a href="https://github.com/snoxlax">snoxlax</a>
 </p>
