@@ -3,22 +3,20 @@ import { useEffect } from 'react';
 import MDToHtml from './MDToHtml';
 import { Button } from 'react-bootstrap';
 import DownloadHtml from './DownloadHtml';
+import { getMarkdownContent } from './utils/localStorage';
 
 interface ConvertedMdProps {
   markdownContent: string;
 }
 
-const STORAGE_KEY = 'markdown-content';
-
 export default function ConvertedMd({ markdownContent }: ConvertedMdProps) {
   const navigate = useNavigate();
-  const content = localStorage.getItem(STORAGE_KEY) || markdownContent || '';
+  const content = getMarkdownContent() || markdownContent || '';
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const handleClick = () => {
-    window.scrollTo(0, 0); // Scroll to top
     navigate('/');
   };
 
