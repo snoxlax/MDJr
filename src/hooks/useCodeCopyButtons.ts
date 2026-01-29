@@ -1,7 +1,16 @@
 import { useEffect } from 'react';
 
+interface ButtonTimeout {
+  timeoutId: ReturnType<typeof setTimeout>;
+  button: HTMLButtonElement;
+}
+
 export function useCodeCopyButtons(dependency?: unknown) {
   useEffect(() => {
+    // Store references for cleanup
+    const wrappers: HTMLDivElement[] = [];
+    const buttonTimeouts: ButtonTimeout[] = [];
+
     // Clean up any existing wrappers first (in case of re-render)
     const existingWrappers = document.querySelectorAll('.code-block-wrapper');
     existingWrappers.forEach((wrapper) => {
@@ -54,6 +63,7 @@ export function useCodeCopyButtons(dependency?: unknown) {
       // Create wrapper
       const wrapper = document.createElement('div');
       wrapper.className = 'code-block-wrapper';
+      wrappers.push(wrapper);
 
       // Create header
       const header = document.createElement('div');
@@ -70,7 +80,8 @@ export function useCodeCopyButtons(dependency?: unknown) {
       button.textContent = 'Copy';
       button.setAttribute('aria-label', 'Copy code to clipboard');
 
-      button.addEventListener('click', async () => {
+      // Define click handler
+      const handleClick = async () => {
         const codeText = codeElement.textContent || '';
         // Wrap with markdown code block syntax
         const wrappedText = languageForMarkdown
@@ -82,10 +93,11 @@ export function useCodeCopyButtons(dependency?: unknown) {
           button.textContent = 'Copied!';
           button.classList.add('copied');
 
-          setTimeout(() => {
+          const timeoutId = setTimeout(() => {
             button.textContent = 'Copy';
             button.classList.remove('copied');
           }, 2000);
+          buttonTimeouts.push({ timeoutId, button });
         } catch {
           // Fallback for older browsers
           const textArea = document.createElement('textarea');
@@ -98,16 +110,19 @@ export function useCodeCopyButtons(dependency?: unknown) {
             document.execCommand('copy');
             button.textContent = 'Copied!';
             button.classList.add('copied');
-            setTimeout(() => {
+            const timeoutId = setTimeout(() => {
               button.textContent = 'Copy';
               button.classList.remove('copied');
             }, 2000);
+            buttonTimeouts.push({ timeoutId, button });
           } catch {
             button.textContent = 'Failed';
           }
           document.body.removeChild(textArea);
         }
-      });
+      };
+
+      button.addEventListener('click', handleClick);
 
       // Assemble header
       header.appendChild(languageLabel);
@@ -118,5 +133,31 @@ export function useCodeCopyButtons(dependency?: unknown) {
       wrapper.appendChild(header);
       wrapper.appendChild(pre);
     });
+
+    // Cleanup function
+    return () => {
+      // Clear all timeouts
+      buttonTimeouts.forEach(({ timeoutId }) => {
+        clearTimeout(timeoutId);
+      });
+
+      // Remove all wrappers and restore original structure
+      wrappers.forEach((wrapper) => {
+        const pre = wrapper.querySelector('pre[class*="language-"]');
+        if (pre && wrapper.parentNode) {
+          // Remove event listeners from buttons
+          const button = wrapper.querySelector('.code-copy-button');
+          if (button) {
+            // Clone button to remove all event listeners
+            const newButton = button.cloneNode(true);
+            button.replaceWith(newButton);
+          }
+
+          // Unwrap: move pre back to where wrapper was
+          wrapper.parentNode.insertBefore(pre, wrapper);
+          wrapper.remove();
+        }
+      });
+    };
   }, [dependency]);
 }

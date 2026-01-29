@@ -1,9 +1,6 @@
 export default function Footer() {
   return (
-    <footer
-      className="px-4 text-white"
-      style={{ opacity: '0.5' }}
-    >
+    <footer className="app-footer">
       <p>snoxlax • © {new Date().getFullYear()}</p>
     </footer>
   );
