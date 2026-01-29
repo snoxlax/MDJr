@@ -10,8 +10,20 @@ interface HomeProps {
 const RULES = [
   { label: 'Headers', syntax: '# Big Header\n## Medium Header' },
   { label: 'Emphasis', syntax: '**Bold** *Italic*' },
-  { label: 'Lists', syntax: '- Item 1\n- Item 2' },
-  { label: 'Links', syntax: '[Text](https://url.com)' },
+  {
+    label: 'Bullet lists',
+    syntax: '* Item one\n* Item two\n* Item three\n\n- Item 1\n- Item 2',
+  },
+  {
+    label: 'Task List',
+    syntax: '* [ ] Unchecked\n* [x] Checked',
+  },
+  { label: 'Horizontal rule', syntax: '---\n***\n___' },
+  {
+    label: 'Links',
+    syntax: '[Link text](https://example.com)\nhttps://example.com',
+  },
+  { label: 'Image links', syntax: '![Alt text](image.png)' },
   { label: 'Code Block', syntax: '```js\nconst x = 1;\n```' },
   { label: 'Inline Code', syntax: 'Use `code` in text' },
 ];
